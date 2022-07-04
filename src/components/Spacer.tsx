@@ -18,7 +18,6 @@ export const Spacer = styled.span`
   min-width: ${getWidth}px;
   height: ${getHeight}px;
   min-height: ${getHeight}px;
-  background-color: white;
 `;
 
 // https://www.joshwcomeau.com/react/modern-spacer-gif/
