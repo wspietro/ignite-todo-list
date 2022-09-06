@@ -17,6 +17,12 @@ export const COLORS = {
   danger: '#E25858'
 }
 
+export const FONT_SIZE = {
+  sm: '0.75rem',
+  md: '0.875rem',
+  lg: '1rem'
+}
+
 export const WEIGHTS = {
   normal: 400,
   bold: 700
