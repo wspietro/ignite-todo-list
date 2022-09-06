@@ -17,7 +17,7 @@ export const MainContentWrapper = styled.main`
   flex-direction: column;
   align-items: center;
 
-  gap: 100px; // 64px figma + 26px compensando margem negativa
+  gap: 6.25rem; // 64px figma + 26px compensando margem negativa
 
   height: 100%;
 
