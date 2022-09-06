@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../styles/Constants";
 import { InputNewTask } from './InputNewTask'
 import { TaskList } from './TaskList'
 
@@ -16,5 +17,9 @@ export const MainContentWrapper = styled.main`
   flex-direction: column;
   align-items: center;
 
-  gap: 76px; // 64px figma + 12px compensando margem negativa
+  gap: 100px; // 64px figma + 26px compensando margem negativa
+
+  height: 100%;
+
+  background-color: ${COLORS.gray[600]};
 `
