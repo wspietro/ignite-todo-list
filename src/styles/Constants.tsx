@@ -2,8 +2,8 @@ export const COLORS = {
   produto: {
     purple: '#8284fa',
     purpleDark: '#5E60CE',
-    blue: '#8284fa',
-    blueDark: '#8284fa',
+    blue: '#4EA8DE',
+    blueDark: '#1E6F9F',
   },
   gray: {
     100: '#F2F2F2',
