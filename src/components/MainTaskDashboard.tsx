@@ -3,7 +3,7 @@ import { COLORS } from "../styles/Constants";
 import { InputNewTask } from './InputNewTask'
 import { TaskList } from './TaskList'
 
-export function MainContent() {
+export function MainTaskDashboard() {
   return (
     <MainContentWrapper>
       <InputNewTask />
