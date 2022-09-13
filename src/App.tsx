@@ -1,12 +1,12 @@
 import { GlobalStyles } from "./styles/GlobalStyles"
 import { Header } from './components/Header'
-import { MainTaskDashboard } from './components/MainTaskDashboard'
+import { MainContent } from './components/MainContent'
 
 export function App() {
   return (
     <>
       <Header />
-      <MainTaskDashboard />
+      <MainContent />
       <GlobalStyles />
     </>
   );

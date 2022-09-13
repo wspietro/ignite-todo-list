@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import { COLORS, FONT_SIZE, WEIGHTS } from "../styles/Constants"
+import { EmptyTasksMessage } from "./EmptyTasksMessage"
 
-export function TaskList() {
+export function TaskDashboard() {
   return (
-    <TaskListWrapper>
-      <TaskListHeader>
+    <TaskDashboardWrapper>
+      <TaskDashboardHeader>
         <p>Tarefas Criadas <Counter>0</Counter></p>
         <p>Concluídas <Counter>0</Counter></p>
-      </TaskListHeader>
-    </TaskListWrapper>
+      </TaskDashboardHeader>
+      <EmptyTasksMessage />
+    </TaskDashboardWrapper>
   );
 };
 
 
-export const TaskListWrapper = styled.section`
+export const TaskDashboardWrapper = styled.section`
   width: 46.125rem;
 
   display: flex;
@@ -21,7 +23,7 @@ export const TaskListWrapper = styled.section`
   gap: 1.5rem;
 `
 
-export const TaskListHeader = styled.div`
+export const TaskDashboardHeader = styled.div`
   display: flex;
   justify-content: space-between;
 

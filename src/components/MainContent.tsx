@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { COLORS } from "../styles/Constants";
 import { InputNewTask } from './InputNewTask'
-import { TaskList } from './TaskList'
+import { TaskDashboard } from './TaskDashboard'
 
-export function MainTaskDashboard() {
+export function MainContent() {
   return (
     <MainContentWrapper>
       <InputNewTask />
-      <TaskList />
+      <TaskDashboard />
     </MainContentWrapper>
   );
 };
