@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { COLORS, FONT_SIZE, WEIGHTS } from "../styles/Constants"
 import { EmptyTasksMessage } from "./EmptyTasksMessage"
+import { Task } from "./Task"
 
 export function TaskDashboard() {
   return (
@@ -9,7 +10,8 @@ export function TaskDashboard() {
         <p>Tarefas Criadas <Counter>0</Counter></p>
         <p>Concluídas <Counter>0</Counter></p>
       </TaskDashboardHeader>
-      <EmptyTasksMessage />
+      {/* <EmptyTasksMessage /> */}
+      <Task />
     </TaskDashboardWrapper>
   );
 };
