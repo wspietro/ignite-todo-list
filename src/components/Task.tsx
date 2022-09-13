@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { COLORS } from '../styles/Constants';
+import CheckboxIcon from './CheckboxIcon';
 
 export function Task() {
 
   return (
     <TaskContainer>
-
+      <CheckboxIcon />
     </TaskContainer>
   );
 };
@@ -18,3 +19,5 @@ export const TaskContainer = styled.div`
 
   height: 4.5rem;
 `
+
+
