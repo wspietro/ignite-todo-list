@@ -11,7 +11,13 @@ export function TaskDashboard() {
         <p>Concluídas <Counter>0</Counter></p>
       </TaskDashboardHeader>
       {/* <EmptyTasksMessage /> */}
-      <Task />
+      <TaskListWrapper>
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+      </TaskListWrapper>
     </TaskDashboardWrapper>
   );
 };
@@ -51,4 +57,11 @@ export const Counter = styled.span`
   border-radius: 999px;
 
   margin-left: 0.5rem;
+`
+
+// TODO: Usar ul e Li?
+export const TaskListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 ` 
