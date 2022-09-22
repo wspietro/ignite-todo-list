@@ -1,13 +1,45 @@
 import styled from 'styled-components';
 import { COLORS, FONT_SIZE, WEIGHTS } from '../styles/Constants';
 import { PlusCircle } from 'phosphor-react'
+import { useState } from 'react';
+import { v4 as uuidv4 } from "uuid";
 
+interface TaskState {
+  id: string;
+  createdAt: Date;
+  taskContent: string;
+  completedAt?: Date;
+}
 
 export function InputNewTask() {
+  const [inputValue, setInputValue] = useState('');
+  const [tasksList, setTasksList] = useState<TaskState[]>([]);
+
+  function handleCreateNewTask() {
+    const id = uuidv4();
+
+    const newTask: TaskState = {
+      id,
+      createdAt: new Date(),
+      taskContent: inputValue,
+    };
+
+    setTasksList(prevState => [...prevState, newTask]);
+
+    setInputValue('');
+  }
+
+  console.log(tasksList);
+
+
   return (
     <InputNewTaskContainer>
-      <InputTask placeholder='Adicione uma nova tarefa' />
-      <CreateTaskButton>
+      <InputTask
+        placeholder='Adicione uma nova tarefa'
+        onChange={e => setInputValue(e.target.value)}
+        value={inputValue}
+      />
+      <CreateTaskButton onClick={handleCreateNewTask}>
         Criar
         <PlusCircle size={18} weight="bold" />
       </CreateTaskButton>
