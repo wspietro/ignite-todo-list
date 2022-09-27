@@ -5,7 +5,7 @@ export interface TaskState {
   id: string;
   createdAt: Date;
   taskContent: string;
-  completedAt?: Date;
+  isCompleted: Boolean;
 }
 
 interface TasksContextType {
@@ -22,6 +22,8 @@ export const TasksContext = createContext({} as TasksContextType)
 
 export function TasksContextProvider({ children }: CyclesContextProviderProps) {
   const [tasksList, setTasksList] = useState<TaskState[]>([]);
+  console.log(tasksList);
+
 
   function createNewTask(inputValue: string) {
     const id = uuidv4();
@@ -31,6 +33,7 @@ export function TasksContextProvider({ children }: CyclesContextProviderProps) {
       id,
       createdAt: new Date(),
       taskContent,
+      isCompleted: false,
     };
 
     setTasksList(prevState => [...prevState, newTask]);
@@ -43,7 +46,9 @@ export function TasksContextProvider({ children }: CyclesContextProviderProps) {
         tasksList
       }}
     >
-      {children}
+      <>
+        {children}
+      </>
     </TasksContext.Provider>
   )
 }

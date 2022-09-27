@@ -7,9 +7,14 @@ import { TaskState } from "../contexts/TasksContext";
 
 export function Task({ taskContent }: TaskState) {
 
+
+  const handleChange = (e: any) => {
+    console.log(e.target.checked);
+  }
+
   return (
     <TaskContainer>
-      <CheckboxIcon />
+      <CheckboxIcon onChange={handleChange} />
       <TaskDedscription>{taskContent}</TaskDedscription>
       <Button>
         <Trash size={24} weight="light" />

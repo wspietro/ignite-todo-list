@@ -7,6 +7,10 @@ import { Task } from "./Task"
 
 export function TaskDashboard() {
   const { tasksList } = useContext(TasksContext);
+  console.log(tasksList);
+
+  //TODO: tasksList está retornando como undefined quando salvamos o arquivo 'TaskContext';
+  // Ao recarregarmos o browser, ou salvar outros arquivos, o valor inicial é '[]'. Esse é o valor esperado, já que temos um inisitalState definido para [];
 
   return (
     <TaskDashboardWrapper>
@@ -22,7 +26,7 @@ export function TaskDashboard() {
               id={task.id}
               createdAt={task.createdAt}
               taskContent={task.taskContent}
-              completedAt={task.completedAt}
+              isCompleted={task.isCompleted}
             />
           ))}
         </TaskListWrapper>
