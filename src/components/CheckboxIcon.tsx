@@ -17,9 +17,13 @@ const checkboxStyles = {
 }
 
 function CheckboxIcon() {
+  const handleChange = (e: any) => {
+    console.log(e.target.checked);
+  }
+
   return (
     <>
-      <Checkbox sx={checkboxStyles} />
+      <Checkbox sx={checkboxStyles} onChange={handleChange} />
     </>
   )
 }
