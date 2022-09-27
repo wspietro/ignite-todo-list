@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TasksContextProvider } from "../contexts/TasksContext";
 import { COLORS } from "../styles/Constants";
 import { InputNewTask } from './InputNewTask'
 import { TaskDashboard } from './TaskDashboard'
@@ -6,8 +7,10 @@ import { TaskDashboard } from './TaskDashboard'
 export function MainContent() {
   return (
     <MainContentWrapper>
-      <InputNewTask />
-      <TaskDashboard />
+      <TasksContextProvider>
+        <InputNewTask />
+        <TaskDashboard />
+      </TasksContextProvider>
     </MainContentWrapper>
   );
 };
