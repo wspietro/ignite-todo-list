@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { COLORS, FONT_SIZE, WEIGHTS } from '../styles/Constants';
 import CheckboxIcon from './CheckboxIcon';
 import { Trash } from 'phosphor-react';
+import { TaskState } from "../contexts/TasksContext";
 
-export function Task() {
+
+export function Task({ taskContent }: TaskState) {
 
   return (
     <TaskContainer>
       <CheckboxIcon />
-      <TaskDedscription>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</TaskDedscription>
+      <TaskDedscription>{taskContent}</TaskDedscription>
       <Button>
         <Trash size={24} weight="light" />
       </Button>
@@ -36,7 +38,9 @@ export const TaskDedscription = styled.p`
   font-size: ${FONT_SIZE.md};
   font-weight: ${WEIGHTS.normal};
   line-height: 1.4;
-  color: ${COLORS.gray[100]};;
+  color: ${COLORS.gray[100]};
+
+  flex: 1;
 `
 
 export const Button = styled.button`
