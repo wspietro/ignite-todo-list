@@ -1,23 +1,32 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { TasksContext } from "../contexts/TasksContext";
 import { COLORS, FONT_SIZE, WEIGHTS } from "../styles/Constants"
 import { EmptyTasksMessage } from "./EmptyTasksMessage"
 import { Task } from "./Task"
 
 export function TaskDashboard() {
+  const { tasksList } = useContext(TasksContext);
+
   return (
     <TaskDashboardWrapper>
       <TaskDashboardHeader>
         <p>Tarefas Criadas <Counter>0</Counter></p>
         <p>Concluídas <Counter>0</Counter></p>
       </TaskDashboardHeader>
-      {/* <EmptyTasksMessage /> */}
-      <TaskListWrapper>
-        <Task />
-        <Task />
-        <Task />
-        <Task />
-        <Task />
-      </TaskListWrapper>
+      {tasksList.length === 0 ? <EmptyTasksMessage /> :
+        <TaskListWrapper>
+          {tasksList.map(task => (
+            <Task
+              key={task.id}
+              id={task.id}
+              createdAt={task.createdAt}
+              taskContent={task.taskContent}
+              completedAt={task.completedAt}
+            />
+          ))}
+        </TaskListWrapper>
+      }
     </TaskDashboardWrapper>
   );
 };
