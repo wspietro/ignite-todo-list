@@ -1,36 +1,17 @@
 import styled from 'styled-components';
 import { COLORS, FONT_SIZE, WEIGHTS } from '../styles/Constants';
 import { PlusCircle } from 'phosphor-react'
-import { useState } from 'react';
-import { v4 as uuidv4 } from "uuid";
-
-interface TaskState {
-  id: string;
-  createdAt: Date;
-  taskContent: string;
-  completedAt?: Date;
-}
+import { useContext, useState } from 'react';
+import { TasksContext } from '../contexts/TasksContext';
 
 export function InputNewTask() {
+  const { createNewTask } = useContext(TasksContext)
   const [inputValue, setInputValue] = useState('');
-  const [tasksList, setTasksList] = useState<TaskState[]>([]);
 
   function handleCreateNewTask() {
-    const id = uuidv4();
-
-    const newTask: TaskState = {
-      id,
-      createdAt: new Date(),
-      taskContent: inputValue,
-    };
-
-    setTasksList(prevState => [...prevState, newTask]);
-
+    createNewTask(inputValue)
     setInputValue('');
   }
-
-  console.log(tasksList);
-
 
   return (
     <InputNewTaskContainer>
