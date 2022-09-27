@@ -1,7 +1,7 @@
 import { createContext, useState } from "react"
 import { v4 as uuidv4 } from "uuid";
 
-interface TaskState {
+export interface TaskState {
   id: string;
   createdAt: Date;
   taskContent: string;
@@ -10,6 +10,7 @@ interface TaskState {
 
 interface TasksContextType {
   createNewTask: (inputValue: string) => void;
+  tasksList: TaskState[];
 }
 
 interface CyclesContextProviderProps {
@@ -39,6 +40,7 @@ export function TasksContextProvider({ children }: CyclesContextProviderProps) {
     <TasksContext.Provider
       value={{
         createNewTask,
+        tasksList
       }}
     >
       {children}
