@@ -11,6 +11,7 @@ export interface TaskState {
 interface TasksContextType {
   createNewTask: (inputValue: string) => void;
   tasksList: TaskState[];
+  changeCompletedValue: (isChecked: boolean, taskId: string) => void;
 }
 
 interface CyclesContextProviderProps {
@@ -22,8 +23,6 @@ export const TasksContext = createContext({} as TasksContextType)
 
 export function TasksContextProvider({ children }: CyclesContextProviderProps) {
   const [tasksList, setTasksList] = useState<TaskState[]>([]);
-  console.log(tasksList);
-
 
   function createNewTask(inputValue: string) {
     const id = uuidv4();
@@ -37,13 +36,32 @@ export function TasksContextProvider({ children }: CyclesContextProviderProps) {
     };
 
     setTasksList(prevState => [...prevState, newTask]);
+  };
+
+  function changeCompletedValue(isChecked: boolean, taskId: string) {
+    setTasksList(prevState =>
+      prevState.map(task => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            isCompleted: isChecked
+          }
+        } else {
+          return task;
+        }
+      }),
+    )
   }
+
+  console.log(tasksList);
+
 
   return (
     <TasksContext.Provider
       value={{
         createNewTask,
-        tasksList
+        tasksList,
+        changeCompletedValue
       }}
     >
       <>

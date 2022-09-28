@@ -2,19 +2,23 @@ import styled from 'styled-components';
 import { COLORS, FONT_SIZE, WEIGHTS } from '../styles/Constants';
 import CheckboxIcon from './CheckboxIcon';
 import { Trash } from 'phosphor-react';
-import { TaskState } from "../contexts/TasksContext";
+import { TasksContext, TaskState } from "../contexts/TasksContext";
+import { useContext } from 'react';
 
 
-export function Task({ taskContent }: TaskState) {
+export function Task({ taskContent, id }: TaskState) {
+  const { changeCompletedValue } = useContext(TasksContext);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked;
+    const taskId = id;
 
-  const handleChange = (e: any) => {
-    console.log(e.target.checked);
+    changeCompletedValue(isChecked, taskId)
   }
 
   return (
     <TaskContainer>
-      <CheckboxIcon onChange={handleChange} />
+      <CheckboxIcon handleCheckboxChange={handleChange} />
       <TaskDedscription>{taskContent}</TaskDedscription>
       <Button>
         <Trash size={24} weight="light" />

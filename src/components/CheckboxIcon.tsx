@@ -16,10 +16,14 @@ const checkboxStyles = {
   },
 }
 
-function CheckboxIcon({ onChange }: any) {
+interface CheckboxIconProps {
+  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function CheckboxIcon({ handleCheckboxChange }: CheckboxIconProps) {
   return (
     <>
-      <Checkbox sx={checkboxStyles} onChange={onChange} />
+      <Checkbox sx={checkboxStyles} onChange={handleCheckboxChange} />
     </>
   )
 }
