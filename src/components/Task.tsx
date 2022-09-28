@@ -6,7 +6,7 @@ import { TasksContext, TaskState } from "../contexts/TasksContext";
 import { useContext } from 'react';
 
 
-export function Task({ taskContent, id }: TaskState) {
+export function Task({ taskContent, id, isCompleted }: TaskState) {
   const { changeCompletedValue } = useContext(TasksContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,10 +16,12 @@ export function Task({ taskContent, id }: TaskState) {
     changeCompletedValue(isChecked, taskId)
   }
 
+
+
   return (
-    <TaskContainer>
+    <TaskContainer isCompleted={isCompleted}>
       <CheckboxIcon handleCheckboxChange={handleChange} />
-      <TaskDedscription>{taskContent}</TaskDedscription>
+      <TaskDedscription isCompleted={isCompleted} >{taskContent}</TaskDedscription>
       <Button>
         <Trash size={24} weight="light" />
       </Button>
@@ -27,8 +29,13 @@ export function Task({ taskContent, id }: TaskState) {
   );
 };
 
-export const TaskContainer = styled.div`
-  background-color: ${COLORS.gray[500]};
+interface CheckBoxStatusProps {
+  isCompleted: boolean;
+}
+
+
+export const TaskContainer = styled.div<CheckBoxStatusProps>`
+  background-color: ${props => props.isCompleted ? COLORS.gray[500] : COLORS.gray[400]} ;
   border: 1px solid ${COLORS.gray[400]};
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
@@ -43,11 +50,12 @@ export const TaskContainer = styled.div`
 
 `
 
-export const TaskDedscription = styled.p`
+export const TaskDedscription = styled.p<CheckBoxStatusProps>`
   font-size: ${FONT_SIZE.md};
   font-weight: ${WEIGHTS.normal};
   line-height: 1.4;
-  color: ${COLORS.gray[100]};
+  color: ${props => props.isCompleted ? COLORS.gray[300] : COLORS.gray[100]};
+  text-decoration: ${props => props.isCompleted ? 'line-through' : "none"};
 
   flex: 1;
 `
