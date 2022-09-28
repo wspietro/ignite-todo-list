@@ -5,7 +5,7 @@ export interface TaskState {
   id: string;
   createdAt: Date;
   taskContent: string;
-  isCompleted: Boolean;
+  isCompleted: boolean;
 }
 
 interface TasksContextType {
