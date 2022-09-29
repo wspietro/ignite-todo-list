@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { Key, useContext } from "react";
 import styled from "styled-components";
-import { TasksContext } from "../contexts/TasksContext";
+import { TasksContext, TaskState } from "../contexts/TasksContext";
 import { COLORS, FONT_SIZE, WEIGHTS } from "../styles/Constants"
 import { EmptyTasksMessage } from "./EmptyTasksMessage"
 import { Task } from "./Task"
@@ -11,15 +11,19 @@ export function TaskDashboard() {
   //TODO: tasksList está retornando como undefined quando salvamos o arquivo 'TaskContext';
   // Ao recarregarmos o browser, ou salvar outros arquivos, o valor inicial é '[]'. Esse é o valor esperado, já que temos um inisitalState definido para [];
 
+  const clonedTaskList = structuredClone(tasksList)
+  const orderedTaskList = clonedTaskList.sort((a: TaskState, b: TaskState) => Number(a.isCompleted) - Number(b.isCompleted));
+
+
   return (
     <TaskDashboardWrapper>
       <TaskDashboardHeader>
         <p>Tarefas Criadas <Counter>0</Counter></p>
         <p>Concluídas <Counter>0</Counter></p>
       </TaskDashboardHeader>
-      {tasksList.length === 0 ? <EmptyTasksMessage /> :
+      {orderedTaskList.length === 0 ? <EmptyTasksMessage /> :
         <TaskListWrapper>
-          {tasksList.map(task => (
+          {orderedTaskList.map((task: TaskState) => (
             <Task
               key={task.id}
               id={task.id}
