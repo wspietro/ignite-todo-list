@@ -11,15 +11,18 @@ export function TaskDashboard() {
   //TODO: tasksList está retornando como undefined quando salvamos o arquivo 'TaskContext';
   // Ao recarregarmos o browser, ou salvar outros arquivos, o valor inicial é '[]'. Esse é o valor esperado, já que temos um inisitalState definido para [];
 
+  // como ordenar com animação?
   const clonedTaskList = structuredClone(tasksList)
   const orderedTaskList = clonedTaskList.sort((a: TaskState, b: TaskState) => Number(a.isCompleted) - Number(b.isCompleted));
 
 
+  const completedTasks = tasksList.filter(task => task.isCompleted === true);
+
   return (
     <TaskDashboardWrapper>
       <TaskDashboardHeader>
-        <p>Tarefas Criadas <Counter>0</Counter></p>
-        <p>Concluídas <Counter>0</Counter></p>
+        <p>Tarefas Criadas <Counter>{orderedTaskList.length}</Counter></p>
+        <p>Concluídas <Counter>{completedTasks.length}</Counter></p>
       </TaskDashboardHeader>
       {orderedTaskList.length === 0 ? <EmptyTasksMessage /> :
         <TaskListWrapper>
