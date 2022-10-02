@@ -12,6 +12,7 @@ interface TasksContextType {
   createNewTask: (inputValue: string) => void;
   tasksList: TaskState[];
   changeCompletedValue: (isChecked: boolean, taskId: string) => void;
+  deleteTask: (taskId: string) => void;
 }
 
 interface CyclesContextProviderProps {
@@ -53,15 +54,17 @@ export function TasksContextProvider({ children }: CyclesContextProviderProps) {
     )
   }
 
-  console.log(tasksList);
-
+  function deleteTask(taskId: string) {
+    setTasksList(prevState => prevState.filter(task => task.id !== taskId))
+  }
 
   return (
     <TasksContext.Provider
       value={{
         createNewTask,
         tasksList,
-        changeCompletedValue
+        changeCompletedValue,
+        deleteTask
       }}
     >
       <>

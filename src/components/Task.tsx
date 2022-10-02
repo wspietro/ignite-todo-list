@@ -7,7 +7,7 @@ import { useContext } from 'react';
 
 
 export function Task({ taskContent, id, isCompleted }: TaskState) {
-  const { changeCompletedValue } = useContext(TasksContext);
+  const { changeCompletedValue, deleteTask } = useContext(TasksContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
@@ -16,13 +16,17 @@ export function Task({ taskContent, id, isCompleted }: TaskState) {
     changeCompletedValue(isChecked, taskId)
   }
 
+  const handleDeleteTask = () => {
+    const taskId = id;
 
+    deleteTask(taskId);
+  }
 
   return (
     <TaskContainer isCompleted={isCompleted}>
       <CheckboxIcon handleCheckboxChange={handleChange} />
       <TaskDedscription isCompleted={isCompleted} >{taskContent}</TaskDedscription>
-      <Button>
+      <Button onClick={handleDeleteTask}>
         <Trash size={24} weight="light" />
       </Button>
     </TaskContainer>
@@ -43,7 +47,7 @@ export const TaskContainer = styled.div<CheckBoxStatusProps>`
   height: 4.5rem;
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
 
   padding: 1rem;
