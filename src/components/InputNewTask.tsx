@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 import { COLORS, FONT_SIZE, WEIGHTS } from '../styles/Constants';
 import { PlusCircle } from 'phosphor-react'
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { TasksContext } from '../contexts/TasksContext';
 
 export function InputNewTask() {
-  const { createNewTask } = useContext(TasksContext)
+  const { createNewTask } = useContext(TasksContext);
   const [inputValue, setInputValue] = useState('');
+  const inputTaskRef = useRef<HTMLInputElement | null>(null);
 
   function handleCreateNewTask() {
     createNewTask(inputValue)
     setInputValue('');
+
+    inputTaskRef.current?.focus();
   }
 
   return (
@@ -19,6 +22,8 @@ export function InputNewTask() {
         placeholder='Adicione uma nova tarefa'
         onChange={e => setInputValue(e.target.value)}
         value={inputValue}
+        autoFocus
+        ref={inputTaskRef}
       />
       <CreateTaskButton onClick={handleCreateNewTask}>
         Criar
