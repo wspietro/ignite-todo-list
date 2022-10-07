@@ -1,6 +1,6 @@
 <h1 align="center" style="color: rgba(68, 131, 97, 1);">Desafio: Ignite Todo List</h1>
 <p align="center">
-    Desafio proposto durante o módulo 1 da trilha de ReactJs do bootcamp <a src="https://lp.rocketseat.com.br/ignite?&&" style="color: rgba(68, 131, 97, 1); text-decoration: underline;">Ignite</a>
+    Desafio proposto durante o módulo 1 da trilha de ReactJs do bootcamp <a href="https://lp.rocketseat.com.br/ignite?&&" style="color: rgba(68, 131, 97, 1); text-decoration: underline;">Ignite</a>
   </p>
 
 <p align="center">
@@ -49,7 +49,7 @@ Foram relembrados na aplicação os seguintes conceitos: Estados, Contextos, Tip
 ### 💄 Layout
 Para essa aplicação a equipe da RocketSeat forneceu um layout para ser seguido.
 
- <a src="https://www.figma.com/file/myovJeEBMZdHlX2KEJaVgI/ToDo-List-(Copy)?node-id=12%3A106" style="color: rgba(68, 131, 97, 1); text-decoration: underline;">Clique aqui</a> e acesse o conteúdo!
+ <a href="https://www.figma.com/file/myovJeEBMZdHlX2KEJaVgI/ToDo-List-(Copy)?node-id=12%3A106" style="color: rgba(68, 131, 97, 1); text-decoration: underline;">Clique aqui</a> e acesse o conteúdo!
 
 <br>
 
