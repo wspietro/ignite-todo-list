@@ -18,11 +18,13 @@ export function TaskDashboard() {
 
   const completedTasks = tasksList.filter(task => task.isCompleted === true);
 
+  const completedDivedPerAll = Math.round((Number(completedTasks.length) / Number(tasksList.length)) * 100);
+
   return (
     <TaskDashboardWrapper>
       <TaskDashboardHeader>
         <p>Tarefas Criadas <Counter>{orderedTaskList.length}</Counter></p>
-        <p>Concluídas <Counter>{completedTasks.length}</Counter></p>
+        <p>Concluídas <Counter>{isNaN(completedDivedPerAll) ? "/" : completedDivedPerAll + "%"}</Counter></p>
       </TaskDashboardHeader>
       {orderedTaskList.length === 0 ? <EmptyTasksMessage /> :
         <TaskListWrapper>
