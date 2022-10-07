@@ -9,7 +9,9 @@ export function InputNewTask() {
   const [inputValue, setInputValue] = useState('');
   const inputTaskRef = useRef<HTMLInputElement | null>(null);
 
-  function handleCreateNewTask() {
+  function handleCreateNewTask(e: React.SyntheticEvent) {
+    e.preventDefault();
+
     createNewTask(inputValue)
     setInputValue('');
 
@@ -17,15 +19,18 @@ export function InputNewTask() {
   }
 
   return (
-    <InputNewTaskContainer>
+    <InputNewTaskContainer
+      onSubmit={handleCreateNewTask}
+    >
       <InputTask
         placeholder='Adicione uma nova tarefa'
         onChange={e => setInputValue(e.target.value)}
         value={inputValue}
         autoFocus
         ref={inputTaskRef}
+        required
       />
-      <CreateTaskButton onClick={handleCreateNewTask}>
+      <CreateTaskButton>
         Criar
         <PlusCircle size={18} weight="bold" />
       </CreateTaskButton>
@@ -33,7 +38,7 @@ export function InputNewTask() {
   );
 };
 
-export const InputNewTaskContainer = styled.div`
+export const InputNewTaskContainer = styled.form`
   margin-top: -1.625rem;
 
   display: flex;
